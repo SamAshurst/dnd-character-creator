@@ -1,6 +1,8 @@
-export default ({classData}) => {
-    console.log(classData)
-    const profs = classData.proficiency_choices[0].from
+export default function ClassDetails({classData}) {
+   const profs = classData.proficiency_choices[0].from
+
+
+//    breaks code when there is no classData
 
    if(!classData.name) return <p>Make your Class selection!</p>
     return (

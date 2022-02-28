@@ -1,4 +1,4 @@
-export default function ({raceData}) {
+export default function RaceDetails({raceData}) {
 
     if(!raceData.name) return <p>Make your selection!</p>
     return (

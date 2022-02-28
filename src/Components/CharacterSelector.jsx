@@ -54,7 +54,7 @@ function CharacterSelector () {
         onClick={() => {
             setCharacter({
             race : race,
-            class : ''
+            class : dndClass
         })
     }}
         >Choose Race</button>
@@ -65,6 +65,15 @@ function CharacterSelector () {
         })}
 
          <ClassDetails classData={classData}/>
+
+         <button 
+        onClick={() => {
+            setCharacter({
+            race : race,
+            class : dndClass
+        })
+    }}
+        >Choose Class</button>
        </div>
 
     </section>
