@@ -2,11 +2,11 @@ import {useState, useEffect} from "react"
 import {fetchApi, fetchRaceData }from "../fecthApi"
 
 function CharacterSelector () {
-    const [character, setCharacter] = useState([])
+    //const [character, setCharacter] = useState([])
     const [category, setCategory] = useState("race")
     const [raceButtons, setRaceButtons] = useState([])
     const [race, setRace] = useState([]) 
-    const [dndClass, setDndClass] = useState()
+    // const [dndClass, setDndClass] = useState()
     
    
     useEffect(()=>{

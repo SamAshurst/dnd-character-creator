@@ -9,7 +9,8 @@ function fetchApi() {
 }
 
 function fetchRaceData(race) {
-  return fetch(`https://www.dnd5eapi.co/api/races/${race.toLowerCase()}`)
+  const lowerCaseRace = race.toString().toLowerCase();
+  return fetch(`https://www.dnd5eapi.co/api/races/${lowerCaseRace}`)
     .then((response) => {
       return response.json();
     })
