@@ -97,3 +97,102 @@ button:hover {
   background: green;
   color: rgb(99, 22, 22);
 }
+
+
+/* Character Component */
+
+section.character {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5rem;
+}
+
+section.character div {
+  height: 75vh;
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+section.character .Dragonborn {
+  background: url('https://295402-905923-raikfcquaxqncofqfm.stackpathdns.com//wp-content/uploads/2021/10/Chromatic-Dragonborn-5E-678x381.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Dwarf {
+  background: url('https://arcaneeye.com/wp-content/uploads/2020/07/ddh2gp0-ec507f1b-14e3-456e-a17b-e6e3d564af04-769x481.jpg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Elf {
+  background: url('https://arcaneeye.com/wp-content/uploads/2020/06/TWTW20150626_icon.jpg.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Gnome {
+  background: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/06/gnome.jpg?q=50&fit=crop&w=740&dpr=1.5');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Half-Elf {
+  background: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/06/half-elf.jpg?q=50&fit=crop&w=740&dpr=1.5');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Half-Orc {
+  background: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/06/half-orc.jpg?q=50&fit=crop&w=740&dpr=1.5');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Halfling {
+  background: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2021/06/halfling-1.jpg?q=50&fit=crop&w=740&dpr=1.5');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Human {
+  background: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2020/01/Dungeons-Dragons-fighter.jpg?q=50&fit=crop&w=740&dpr=1.5');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character .Tiefling {
+  background: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2020/07/tiefling-1400x700.jpg?q=50&fit=crop&w=740&dpr=1.5');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+section.character div .character-text-container {
+  width: 40vw;
+  height: 20vh;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.6);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.character div .character-text-container p {
+  color:rgb(99, 22, 22);
+}
