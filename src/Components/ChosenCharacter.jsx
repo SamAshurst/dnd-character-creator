@@ -1,4 +1,4 @@
-export default function CharacterSelector({character, classData}) {
+export default function ChosenCharacter({character, classData}) {
 
     if (character.class === "" || classData.name === ''){
         return <p>Select your Character!</p>
