@@ -9,7 +9,7 @@ export default function ClassDetails({classData}) {
             <div>
                 <h4>Here are the class details for {classData.name}</h4>
 
-                <div>
+                <div className="details class">
                     <p>Hit Die: {classData.hit_die}</p>
                     {profs.map(prof => {
                         return (
