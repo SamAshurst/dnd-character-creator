@@ -2,6 +2,7 @@ import {useState, useEffect} from "react"
 import {fetchApi, fetchRaceData, fetchClassApi, fetchClassData }from "../fetchApi"
 import RaceDetails from "./RaceDetails"
 import ClassDetails from "./ClassDetails"
+import ChosenCharacter from "./ChosenCharacter"
 
 
 function CharacterSelector () {
@@ -43,6 +44,8 @@ function CharacterSelector () {
         })
     },[dndClass])
 
+
+
     return <section>
         <div>
              {raceButtons.map((race, index)=>{
@@ -78,7 +81,7 @@ function CharacterSelector () {
     }}
         >Choose Class</button>
        </div>
-
+    <ChosenCharacter character={character} classData={classData}/>
     </section>
 
 }
