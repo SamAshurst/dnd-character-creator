@@ -9,10 +9,11 @@ function CharacterSelector () {
     const [character, setCharacter] = useState(
         {
             race : '',
-            stats: {},
+            CharacterStats: {},
             class : ''
         }
     )
+
     const [category, setCategory] = useState("")
     const [raceButtons, setRaceButtons] = useState([])
     const [raceData, setRaceData] = useState([])
@@ -20,14 +21,26 @@ function CharacterSelector () {
     const [dndClass, setDndClass] = useState([])
     const [classData, setClassData] = useState([])
     const [classButtons, setClassButtons] = useState([])
-    const [stats, setStats] = useState({})
-
+    const [stats, setStats] = useState({Strength: 5, Dexterity: 5, Constitution: 5, Wisdom: 5, Intelligence:5, Charisma:5})
+    const [strengthStat, setStrength] = useState(5)
+    const [dexterityStat, setDexterity] = useState(5)
+    const [constitutionStat, setConstitution] = useState(5)
+    const [wisdomStat, setWisdom] = useState(5)
+    const [intelligenceStat, setIntelligence] = useState(5)
+    const [charismaStat, setCharisma] = useState(5)
+    const [remainingPoints, setRemaining] = useState(5)
 
 
     useEffect(()=>{
-        fetchApi().then((raceData)=>{
+        fetchApi()
+        .then((raceData)=>{
              setRaceButtons(raceData)
-        })
+        }).then(()=>{
+           return fetchClassApi()
+            
+        }).then((classData)=>{
+            setClassButtons(classData)
+       })
     },[])
 
     useEffect(()=>{
@@ -36,19 +49,13 @@ function CharacterSelector () {
         })
     },[race])
 
-     useEffect(()=>{
-        fetchClassApi().then((classData)=>{
-             setClassButtons(classData)
-        })
-    },[])
-
     useEffect(()=>{
         fetchClassData(dndClass).then((data)=>{
             setClassData(data)
         })
     },[dndClass])
 
-
+    
     if(category === 'race') {
         return (
                 <div>
@@ -68,7 +75,7 @@ function CharacterSelector () {
                 onClick={() => {
                     setCharacter({
                     race : race,
-                    stats: {},
+                    CharacterStats: {},
                     class : ''
                 })
                 setCategory("stats")
@@ -79,9 +86,79 @@ function CharacterSelector () {
     }
 
     if(category === 'stats') {
+
         return (
             <div>
                 <h2>This will be the stats section</h2>
+                <p>{remainingPoints}</p>
+                <div className="stats-container">
+                    <div className="stats-row">
+                        <p>Strength</p>
+                        <button onClick={()=>{
+                            if(strengthStat > 0){
+                                setStrength(strengthStat-1)
+                                setRemaining(remainingPoints+1)
+                            }
+                        }}>-</button>
+                        {strengthStat}
+                        <button>+</button>
+                    </div>
+                    <div className="stats-row">
+                        <p>Dexterity</p>
+                        <button onClick={()=>{
+                            if(dexterityStat > 0){
+                                setDexterity(dexterityStat-1)
+                                setRemaining(remainingPoints+1)
+                            }
+                        }}>-</button>
+                        {dexterityStat}
+                        <button>+</button>
+                    </div>
+                    <div className="stats-row">
+                        <p>Constitution</p>
+                        <button onClick={()=>{
+                            if(constitutionStat > 0){
+                                setConstitution(constitutionStat-1)
+                                setRemaining(remainingPoints+1)
+                            }
+                        }}>-</button>
+                        {constitutionStat}
+                        <button>+</button>
+                    </div>
+                    <div className="stats-row">
+                        <p>Wisdom</p>
+                        <button onClick={()=>{
+                            if(wisdomStat > 0){
+                                setWisdom(wisdomStat-1)
+                                setRemaining(remainingPoints+1)
+                            }
+                        }}>-</button>
+                        {wisdomStat}
+                        <button>+</button>
+                    </div>
+                    <div className="stats-row">
+                        <p>Intelligence</p>
+                        <button onClick={()=>{
+                            if(intelligenceStat > 0){
+                                setIntelligence(intelligenceStat-1)
+                                setRemaining(remainingPoints+1)
+                            }
+                        }}>-</button>
+                        {intelligenceStat}
+                        <button>+</button>
+                    </div>
+                    <div className="stats-row">
+                        <p>Charisma</p>
+                        <button onClick={()=>{
+                            if(charismaStat > 0){
+                                setCharisma(charismaStat-1)
+                                setRemaining(remainingPoints+1)
+                            }
+                        }}>-</button>
+                        {charismaStat}
+                        <button>+</button>
+                    </div>
+                </div>
                 <button
                 onClick={() => {
                     setCategory('race')
@@ -92,7 +169,7 @@ function CharacterSelector () {
                 onClick={() => {
                     setCharacter({
                     race : race,
-                    stats: stats,
+                    CharacterStats: stats,
                     class : ""
                 })
                 setCategory("class")
@@ -100,6 +177,7 @@ function CharacterSelector () {
                 >Confirm Stats</button>
             </div>
         )
+        
     }
 
     if(category === 'class') {
@@ -120,7 +198,7 @@ function CharacterSelector () {
             onClick={() => {
                 setCharacter({
                 race : race,
-                stats: stats,
+                CharacterStats: stats,
                 class : dndClass
             })
             setCategory("character")
@@ -145,13 +223,13 @@ function CharacterSelector () {
                     setCharacter(
                          {
                             race : '',
-                            stats: {},
+                            CharacterStats: {},
                             class : ''
                         }
                     )
                     setRace([])
-                    setStats({})
                     setDndClass([])
+                    setStats([{Strength: 5, Dexterity: 5, Constitution: 5, Wisdom: 5, Intelligence:5, Charisma:5}])
                 }}
                 >Reset</button>
             </section>

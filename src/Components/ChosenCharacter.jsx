@@ -1,4 +1,4 @@
-export default function ({character, classData}) {
+export default function CharacterSelector({character, classData}) {
     console.log(classData)
     if (character.class === "" || classData.name === ''){
         return <p>Select your Character!</p>
