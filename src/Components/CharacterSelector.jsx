@@ -9,17 +9,21 @@ function CharacterSelector () {
     const [character, setCharacter] = useState(
         {
             race : '',
+            stats: {},
             class : ''
         }
     )
-    // const [category, setCategory] = useState("race")
+    const [category, setCategory] = useState("")
     const [raceButtons, setRaceButtons] = useState([])
     const [raceData, setRaceData] = useState([])
     const [race, setRace] = useState([]) 
     const [dndClass, setDndClass] = useState([])
     const [classData, setClassData] = useState([])
     const [classButtons, setClassButtons] = useState([])
-   
+    const [stats, setStats] = useState({})
+
+
+
     useEffect(()=>{
         fetchApi().then((raceData)=>{
              setRaceButtons(raceData)
@@ -45,45 +49,125 @@ function CharacterSelector () {
     },[dndClass])
 
 
+    if(category === 'race') {
+        return (
+                <div>
+                    {raceButtons.map((race, index)=>{
+                    return <button type="button" key={index} onClick={(e)=>{setRace(e.target.outerText)}}>{race.name}</button>
+                })}
 
-    return <section>
-        <div>
-             {raceButtons.map((race, index)=>{
-            return <button type="button" key={index} onClick={(e)=>{setRace(e.target.outerText)}}>{race.name}</button>
-        })}
+                <RaceDetails raceData={raceData}/>
 
-        <RaceDetails raceData={raceData}/>
+                <button
+                onClick={() => {
+                    setCategory('')
+                }}
+                >Back</button>
+                <button 
+                className={race.length===0 ? "btn" : "btn show"}
+                onClick={() => {
+                    setCharacter({
+                    race : race,
+                    stats: {},
+                    class : ''
+                })
+                setCategory("stats")
+            }}
+                >Choose Race</button>
+            </div>
+        )
+    }
 
-        <button 
-        className={race.length===0 ? "btn" : "btn show"}
-        onClick={() => {
-            setCharacter({
-            race : race,
-            class : ''
-        })
-    }}
-        >Choose Race</button>
+    if(category === 'stats') {
+        return (
+            <div>
+                <h2>This will be the stats section</h2>
+                <button
+                onClick={() => {
+                    setCategory('race')
+                }}
+                >Back</button>
+                <button 
+                className="btn show"
+                onClick={() => {
+                    setCharacter({
+                    race : race,
+                    stats: stats,
+                    class : ""
+                })
+                setCategory("class")
+            }}
+                >Confirm Stats</button>
+            </div>
+        )
+    }
+
+    if(category === 'class') {
+        return (
+            <div>
+                {classButtons.map((classes)=>{
+                return <button type="button" key={classes.name} onClick={(e)=>{setDndClass(e.target.outerText)}}>{classes.name}</button>
+            })}
+
+            <ClassDetails classData={classData}/>
+            <button
+                onClick={() => {
+                    setCategory('stats')
+                }}
+                >Back</button>
+            <button 
+            className={dndClass.length===0 ? "btn" : "btn show"}
+            onClick={() => {
+                setCharacter({
+                race : race,
+                stats: stats,
+                class : dndClass
+            })
+            setCategory("character")
+        }}
+            >Choose Class</button>
         </div>
-       <div>
-            {classButtons.map((classes)=>{
-            return <button type="button" key={classes.name} onClick={(e)=>{setDndClass(e.target.outerText)}}>{classes.name}</button>
-        })}
+        )
+    }
 
-        <ClassDetails classData={classData}/>
+    if(category === 'character') {
+        return (
+            <section>
+                <ChosenCharacter character={character} classData={classData}/>
+                <button
+                onClick={() => {
+                    setCategory('class')
+                }}
+                >Back</button>
+                <button
+                onClick={() => {
+                    setCategory('')
+                    setCharacter(
+                         {
+                            race : '',
+                            stats: {},
+                            class : ''
+                        }
+                    )
+                    setRace([])
+                    setStats({})
+                    setDndClass([])
+                }}
+                >Reset</button>
+            </section>
+        )
+    }
 
-        <button 
-        className={dndClass.length===0 ? "btn" : "btn show"}
-        onClick={() => {
-            setCharacter({
-            race : race,
-            class : dndClass
-        })
-    }}
-        >Choose Class</button>
-       </div>
-    <ChosenCharacter character={character} classData={classData}/>
-    </section>
-
+    return (
+        <div>
+            <h1>Ready to begin choosing your character?</h1>
+            <button
+            onClick={() => {
+                setCategory("race")
+            }}
+            >Click here</button>
+        </div>
+    )
 }
     
 
