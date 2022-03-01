@@ -110,8 +110,8 @@ section.character {
 }
 
 section.character div {
-  height: 75vh;
-  width: 75vw;
+  height: 80vh;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -181,13 +181,13 @@ section.character .Tiefling {
 }
 
 section.character div .character-text-container {
-  width: 40vw;
-  height: 20vh;
+  width: 70%;
+  height: 40%;
   text-align: center;
   border-radius: 10px;
   box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.5);
   background: rgba(255,255,255,0.6);
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,4 +195,17 @@ section.character div .character-text-container {
 
 section.character div .character-text-container p {
   color:rgb(99, 22, 22);
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+section.character div .character-text-container ul {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+}
+
+section.character div .character-text-container ul li {
+  padding: 1rem;
+  font-size: 1.5rem;
 }

@@ -21,7 +21,6 @@ function CharacterSelector () {
     const [dndClass, setDndClass] = useState([])
     const [classData, setClassData] = useState([])
     const [classButtons, setClassButtons] = useState([])
-    const [stats, setStats] = useState({Strength: 5, Dexterity: 5, Constitution: 5, Wisdom: 5, Intelligence:5, Charisma:5})
     const [strengthStat, setStrength] = useState(5)
     const [dexterityStat, setDexterity] = useState(5)
     const [constitutionStat, setConstitution] = useState(5)
@@ -29,7 +28,15 @@ function CharacterSelector () {
     const [intelligenceStat, setIntelligence] = useState(5)
     const [charismaStat, setCharisma] = useState(5)
     const [remainingPoints, setRemaining] = useState(5)
-
+    const [stats, setStats] = useState(
+        {
+            Strength: strengthStat,
+            Dexterity: dexterityStat,
+            Constitution: constitutionStat,
+            Wisdom: wisdomStat,
+            Intelligence: intelligenceStat,
+            Charisma: charismaStat}
+        )
 
     useEffect(()=>{
         fetchApi()
@@ -101,7 +108,12 @@ function CharacterSelector () {
                             }
                         }}>-</button>
                         {strengthStat}
-                        <button>+</button>
+                        <button onClick={()=>{
+                            if(remainingPoints > 0){
+                                setStrength(strengthStat+1)
+                                setRemaining(remainingPoints-1)
+                            }
+                        }}>+</button>
                     </div>
                     <div className="stats-row">
                         <p>Dexterity</p>
@@ -112,7 +124,12 @@ function CharacterSelector () {
                             }
                         }}>-</button>
                         {dexterityStat}
-                        <button>+</button>
+                        <button onClick={()=>{
+                            if(remainingPoints > 0){
+                                setDexterity(dexterityStat+1)
+                                setRemaining(remainingPoints-1)
+                            }
+                        }}>+</button>
                     </div>
                     <div className="stats-row">
                         <p>Constitution</p>
@@ -123,7 +140,12 @@ function CharacterSelector () {
                             }
                         }}>-</button>
                         {constitutionStat}
-                        <button>+</button>
+                        <button onClick={()=>{
+                            if(remainingPoints > 0){
+                                setConstitution(constitutionStat+1)
+                                setRemaining(remainingPoints-1)
+                            }
+                        }}>+</button>
                     </div>
                     <div className="stats-row">
                         <p>Wisdom</p>
@@ -134,7 +156,12 @@ function CharacterSelector () {
                             }
                         }}>-</button>
                         {wisdomStat}
-                        <button>+</button>
+                        <button onClick={()=>{
+                            if(remainingPoints > 0){
+                                setWisdom(wisdomStat+1)
+                                setRemaining(remainingPoints-1)
+                            }
+                        }}>+</button>
                     </div>
                     <div className="stats-row">
                         <p>Intelligence</p>
@@ -145,7 +172,12 @@ function CharacterSelector () {
                             }
                         }}>-</button>
                         {intelligenceStat}
-                        <button>+</button>
+                        <button onClick={()=>{
+                            if(remainingPoints > 0){
+                                setIntelligence(intelligenceStat+1)
+                                setRemaining(remainingPoints-1)
+                            }
+                        }}>+</button>
                     </div>
                     <div className="stats-row">
                         <p>Charisma</p>
@@ -156,7 +188,12 @@ function CharacterSelector () {
                             }
                         }}>-</button>
                         {charismaStat}
-                        <button>+</button>
+                        <button onClick={()=>{
+                            if(remainingPoints > 0){
+                                setCharisma(charismaStat+1)
+                                setRemaining(remainingPoints-1)
+                            }
+                        }}>+</button>
                     </div>
                 </div>
                 <button
@@ -167,13 +204,23 @@ function CharacterSelector () {
                 <button 
                 className="btn show"
                 onClick={() => {
-                    setCharacter({
-                    race : race,
-                    CharacterStats: stats,
-                    class : ""
-                })
-                setCategory("class")
-            }}
+                    if(remainingPoints===0){
+                        setStats({
+                            Strength: strengthStat,
+                            Dexterity: dexterityStat,
+                            Constitution: constitutionStat,
+                            Wisdom: wisdomStat,
+                            Intelligence: intelligenceStat,
+                            Charisma: charismaStat
+                        })
+                        setCharacter({
+                            race : race,
+                            CharacterStats: stats,
+                            class : ""
+                        })
+                        setCategory("class")
+                    }
+                }}
                 >Confirm Stats</button>
             </div>
         )
@@ -229,7 +276,13 @@ function CharacterSelector () {
                     )
                     setRace([])
                     setDndClass([])
-                    setStats([{Strength: 5, Dexterity: 5, Constitution: 5, Wisdom: 5, Intelligence:5, Charisma:5}])
+                    setStrength(5)
+                    setWisdom(5)
+                    setCharisma(5)
+                    setIntelligence(5)
+                    setConstitution(5)
+                    setDexterity(5)
+                    setRemaining(5)
                 }}
                 >Reset</button>
             </section>
