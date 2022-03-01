@@ -80,6 +80,7 @@ button:hover {
 
 .btn {
   margin: 1rem 1rem 5rem 1rem;
+  font-size: 1.5rem;
   visibility: hidden;
   width: 40vw;
   padding: 1rem;
