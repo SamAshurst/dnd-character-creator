@@ -96,7 +96,7 @@ function CharacterSelector () {
 
         return (
             <div>
-                <h2>This will be the stats section</h2>
+                <h2>Remaining Points:</h2>
                 <p>{remainingPoints}</p>
                 <div className="stats-container">
                     <div className="stats-row">
@@ -305,8 +305,3 @@ function CharacterSelector () {
 
 export default CharacterSelector
 
-    // <h2> Select your {category}
-    // Buttons to pick a race - updates SetRace to display infor on selected race
-    // Race Info from API - Name, speed, alignment, starting_proficiencies, languages, traits 
-    // Class Info - Name, hit_die, proficiency_choices, proficiencies, saving_throws
-    // results page shows choices made
