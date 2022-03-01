@@ -3,6 +3,7 @@ import {fetchApi, fetchRaceData, fetchClassApi, fetchClassData }from "../fetchAp
 import RaceDetails from "./RaceDetails"
 import ClassDetails from "./ClassDetails"
 
+
 function CharacterSelector () {
     const [character, setCharacter] = useState(
         {
@@ -51,6 +52,7 @@ function CharacterSelector () {
         <RaceDetails raceData={raceData}/>
 
         <button 
+        className={race.length===0 ? "btn" : "btn show"}
         onClick={() => {
             setCharacter({
             race : race,
@@ -64,9 +66,10 @@ function CharacterSelector () {
             return <button type="button" key={classes.name} onClick={(e)=>{setDndClass(e.target.outerText)}}>{classes.name}</button>
         })}
 
-         <ClassDetails classData={classData}/>
+        <ClassDetails classData={classData}/>
 
-         <button 
+        <button 
+        className={dndClass.length===0 ? "btn" : "btn show"}
         onClick={() => {
             setCharacter({
             race : race,
