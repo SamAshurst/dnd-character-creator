@@ -1,6 +1,6 @@
 export default function ({character, classData}) {
-    if (character.class === ""){
-        return <div></div>
+    if (character.class === "" || classData.name === ''){
+        return <p>Select your Character!</p>
     }
     return <section>
         <div className={character.race}>

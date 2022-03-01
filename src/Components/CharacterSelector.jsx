@@ -59,7 +59,7 @@ function CharacterSelector () {
         onClick={() => {
             setCharacter({
             race : race,
-            class : dndClass
+            class : ''
         })
     }}
         >Choose Race</button>
